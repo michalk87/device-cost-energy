@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#faebd7">
+<center>
+
+<h2>Urządzenia elektryczne - koszty energi</h2>
+
+    <HR NOSHADE>
+
+    <form th:action="@{/}" th:object="${deviceForm}" method="post">
+       <h4>Dodaj urządzenie <input placeholder="Nazwa urządzenia" type="text" th:field="*{name}">
+        <input placeholder="Koszt" type="text" th:field="*{cost}">
+        <input type="submit" value="dodaj">
+       </h4>
+    </form>
+
+    <HR NOSHADE>
+
+</center>
+
+    <table style="width: 30%">
+        <tr>
+        <tr>
+            <th style="color: blueviolet">Urządzenie</th>
+            <th style="color: blueviolet">Koszt za godzinę</th>
+        </tr>
+
+    <th:block th:each="device : ${devices}">
+        <th th:text="${device.name}"></th>
+        <th th:text="${device.cost} + ' zł' "></th>
+        </tr>
+    </th:block>
+    </table>
+
+
+</body>
+</html>
